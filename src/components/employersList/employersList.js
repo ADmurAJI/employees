@@ -1,10 +1,16 @@
 import EmployersListItem from '../employersListItem/employersListItem';
 import './employersList.css';
 
-function EmployersList({ data }) {
+function EmployersList({ data, onDelete }) {
   const elements = data.map((item) => {
     const { id, ...itemProps } = item;
-    return <EmployersListItem key={id} {...itemProps} />;
+    return (
+      <EmployersListItem
+        key={id}
+        {...itemProps}
+        onDelete={() => onDelete(id)}
+      />
+    );
   });
 
   return <ul className="app-list list-group">{elements}</ul>;
